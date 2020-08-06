@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="arv.css">
     <title>Agenda Telefônica</title>
-    <?php
-    $gestao = 'Conselho de Gestão';
-    $ceo = 'CEO';
-    $secExec = 'Secretaria Executiva';
-    $cso = 'CSO';
-    $cfo = 'CFO';
-    $gestMaq = 'Gestor Máquinas';
-    $gestCam = 'Gestor Caminhões';
-    $gestEngeLog = 'Gestor EngeLog';
-    $gestSup = 'Gestor Suprimentos';
-    ?>
+    
     <script>
 
     </script>
@@ -22,18 +12,17 @@
 <body>
     <div class="content">
     <div class="gestao">
-        <?php echo $gestao; ?> 
-    </div>
-    <div class="cont1">
-        <?php echo $ceo ?>
-        <?php echo $secExec ?>
-    </div>
-    <div class="cont2">
-        <?php echo $cso ?>
-    <div class="contCso">
 
-    </div>
-        <?php echo $cfo ?>
+    <?php
+       $con = mysqli_connect('localhost', 'root', '', 'agenda');
+       $sql = "SELECT idSetor, nomeSetor FROM 'setor'";
+       $setores = mysqli_query($sql, $con) or die(mysqli_error());
+
+       while($row = mysqli_fetch_assoc($setores)){
+           echo '<p>'.$row['nomeSetor'].'</p>';
+       }
+
+    ?>
     </div>
     </div>
 </body>
